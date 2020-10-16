@@ -1,0 +1,13 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: springcloud_client_consumer
+eureka:
+  instance:
+    hostname: host
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:80/eureka/,http://127.0.0.1:81/eureka/

@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: springcloud_client-provider
+  #配置jdbc连接协议ip和端口以及连接的数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springboot_test?serverTimezone=UTC
+    username: root
+    password: root
+  #
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+
+
+#配置eureka
+eureka:
+  instance:
+    hostname: localhost
+    #设置instanceid 是通过DiscoveryClient.getInstances()中的参数
+    instance-id: springcloud_client-provider
+  client:
+    service-url:
+      #eureka的服务端地址
+      defaultZone: http://127.0.0.1:80/eureka/,http://127.0.0.1:81/eureka/

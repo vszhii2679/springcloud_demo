@@ -1,0 +1,35 @@
+#配置eureka的服务器
+# eureka 配置
+# eureka 一共有4部分 配置
+# 1. dashboard:eureka的web控制台配置
+# 2. server:eureka的服务端配置
+# 3. client:eureka的客户端配置
+# 4. instance:eureka的实例配置
+spring:
+  application:
+    name: springcloud_server
+server:
+  port: 81
+eureka:
+  instance:
+    hostname: cluster-server2
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    service-url:
+      #eureka的服务端地址
+      defaultZone: http://cluster-server1:80/eureka/
+      #defaultZone: http://127.0.0.1:80/eureka
+    #是否注册到注册中心，作为服务端本身不需要注册，修改为false
+    register-with-eureka: false
+    #是否从注册中心获取其他服务的地址，作为服务器不需要使用其他服务，修改为false
+    fetch-registry: false
+
+  server:
+    #关闭自我保护
+    enable-self-preservation: false
+    #清理间隔(间隔毫秒)
+    eviction-interval-timer-in-ms: 60000
+
+    # dashboard://todo
+
