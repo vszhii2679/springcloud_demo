@@ -1,0 +1,21 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: config-server
+  # spring cloud config
+  cloud:
+    config:
+      server:
+        # git 的 远程仓库地址
+        git:
+          uri: https://gitee.com/sobann/springcloud_config.git
+      label: master # 分支配置
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+  client:
+      service-url:
+        defaultZone: http://127.0.0.1:9999/eureka

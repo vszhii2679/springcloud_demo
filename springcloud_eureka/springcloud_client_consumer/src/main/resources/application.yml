@@ -3,6 +3,7 @@ server:
 spring:
   application:
     name: springcloud_client_consumer
+#配置eureka客户端
 eureka:
   instance:
     hostname: host

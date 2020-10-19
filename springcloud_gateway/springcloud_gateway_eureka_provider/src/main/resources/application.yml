@@ -1,0 +1,14 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: springcloud-eureka-provider
+
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    hostname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9999/eureka
+

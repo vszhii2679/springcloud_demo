@@ -1,0 +1,32 @@
+# 配置config-server地址
+# 配置获得配置文件的名称等信息
+spring:
+  cloud:
+    config:
+      # 配置config-server地址
+#      uri: http://localhost:9527
+      # 配置获得配置文件的名称等信息
+      name: application # 文件名
+      profile: dev # profile指定，  application-dev.yml
+      label: master # 分支
+      discovery:
+        enabled: true
+        #从注册中心中获取config中的配置参数
+        service-id: CONFIG-SERVER
+
+  #config刷新要在config客户端上引入actuator依赖，配置以下内容
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+
+#config集成eureka ，eureka的配置信息要写在bootstrap.yml内
+eureka:
+  instance:
+    hostname: localhost
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9999/eureka

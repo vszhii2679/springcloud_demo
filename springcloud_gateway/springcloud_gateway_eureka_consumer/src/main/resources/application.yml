@@ -1,0 +1,28 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: springcloud-eureka-consumer
+#配置eureka客户端
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+    ip-address: 127.0.0.1
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9999/eureka
+#开启feign对hystrix的支持
+feign:
+  hystrix:
+    enabled: true
+#feign底层依赖ribbon实现负载均衡和远程调用
+#配置ribbon的超时时间
+ribbon:
+  ConnectTimeout: 1000 #连接超时时间，默认1000ms
+  ReadTimeout: 3000 #逻辑处理的连接时间，默认1000ms
+
+#设置当前的日志级别，feign只支持debug级别的日志
+logging:
+  level:
+    #缩小日志记录范围
+    com.itheima: debug

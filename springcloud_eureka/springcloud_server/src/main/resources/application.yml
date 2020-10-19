@@ -18,9 +18,9 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      #eureka的服务端地址
-      defaultZone: http://cluster-server2:81/eureka/
-      #defaultZone: http://127.0.0.1:80/eureka
+      #eureka的服务端地址 互相注册形成集群
+#      defaultZone: http://cluster-server2:81/eureka/
+      defaultZone: http://127.0.0.1:80/eureka
     #是否注册到注册中心，作为服务端本身不需要注册，修改为false
     register-with-eureka: false
     #是否从注册中心获取其他服务的地址，作为服务器不需要使用其他服务，修改为false

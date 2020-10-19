@@ -1,0 +1,10 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: nacos-server-provider #服务提供者名称，使用feign远程调用，不能使用下划线
+  #配置nacos服务端地址
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848

@@ -1,0 +1,21 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: springcloud-eureka-server
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+    ip-address: 127.0.0.1
+  client:
+    defaultZone: http://${eureka.instance.ip-address}:${server.port}/eureka
+    #取消注册到eureka
+    register-with-eureka: false
+    #取消从eureka获取服务
+    fetch-registry: false
+  server:
+    #关闭自我保护
+    enable-self-preservation: false
+    #清理间隔(间隔毫秒)
+    eviction-interval-timer-in-ms: 60000
+    # dashboard://todo

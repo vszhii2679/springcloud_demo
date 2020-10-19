@@ -1,0 +1,28 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: springcloud-gateway-server
+  cloud:
+    gateway:
+      routes:
+        #id 唯一标识
+        - id: gateway-provider
+          #uri 转发路径  #静态路由
+#          uri: http://127.0.0.1:8001
+          #uri 转发路径  #动态路由
+          uri: lb://SPRINGCLOUD-EUREKA-PROVIDER
+          #predicates 用来请求网关路径的匹配规则
+          predicates:
+            - Path=/provider/**
+        - id: gateway-consumer
+          uri: http://127.0.0.1:8002
+          predicates:
+            - Path=/consumer/**
+eureka:
+  instance:
+    ip-address: 127.0.0.1
+    hostname: ${spring.application.name}
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9999/eureka
